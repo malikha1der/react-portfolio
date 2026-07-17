@@ -97,7 +97,7 @@ function Footer() {
 
                         <a
 
-                            href="https://github.com/yourusername"
+                            href="https://github.com/malikha1der"
 
                             target="_blank"
 
@@ -111,7 +111,7 @@ function Footer() {
 
                         <a
 
-                            href="https://linkedin.com/in/yourusername"
+                            href="https://www.linkedin.com/in/malik-haider-1a5017393?utm_source=share_via&utm_content=profile&utm_medium=member_android"
 
                             target="_blank"
 
