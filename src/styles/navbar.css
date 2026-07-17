@@ -1,0 +1,328 @@
+/* =========================
+   Navbar
+========================= */
+body {
+    background-color: #201a1a;
+}
+
+.navbar {
+    margin-top: 1px;
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+    height: 16%;
+
+    padding: 22px 8%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    background: #201a1a;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+
+    transition: .35s ease;
+
+    z-index: 9999;
+
+}
+
+/* Scroll Navbar */
+
+.navbar-scrolled {
+
+    padding: 14px 8%;
+
+    background: #000000;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .45);
+
+}
+
+/* =========================
+   Logo
+========================= */
+
+.logo a {
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+}
+
+.logo-wrapper {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+.logo-img {
+
+    width: 180px;
+
+    height: auto;
+
+    transition: .35s ease;
+
+    filter:
+        drop-shadow(0 0 12px rgba(0, 245, 255, .90)) drop-shadow(0 0 25px rgba(0, 245, 255, .80)) drop-shadow(0 0 45px rgba(0, 245, 255, .70)) drop-shadow(0 0 70px rgba(0, 245, 255, .60));
+
+}
+
+.logo-small {
+
+    width: 145px;
+
+}
+
+.logo-img:hover {
+
+    transform: rotate(8deg) scale(1.08);
+
+    filter:
+        drop-shadow(0 0 20px rgba(0, 245, 255, 1)) drop-shadow(0 0 40px rgba(0, 245, 255, .95)) drop-shadow(0 0 70px rgba(0, 245, 255, .85)) drop-shadow(0 0 100px rgba(0, 245, 255, .75));
+
+}
+
+/* =========================
+   Desktop Menu
+========================= */
+
+.desktop-menu ul {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+
+    list-style: none;
+
+}
+
+.desktop-menu a {
+
+    position: relative;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    font-weight: 500;
+
+    transition: .3s;
+
+}
+
+.desktop-menu a:hover {
+
+    color: #00f5ff;
+
+    transform: scale(1.08);
+
+}
+
+/* =========================
+   Active Link
+========================= */
+
+.active-link {
+
+    color: #00f5ff !important;
+
+}
+
+.active-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -8px;
+
+    width: 100%;
+
+    height: 2px;
+
+    border-radius: 10px;
+
+    background: #00f5ff;
+
+    box-shadow: 0 0 12px #00f5ff;
+
+    animation: activeLine .35s ease;
+
+}
+
+@keyframes activeLine {
+
+    from {
+
+        width: 0;
+
+    }
+
+    to {
+
+        width: 100%;
+
+    }
+
+}
+
+/* =========================
+   Mobile Button
+========================= */
+
+.menu-btn {
+
+    display: none;
+
+    background: none;
+
+    border: none;
+
+    color: #ffffff;
+
+    font-size: 32px;
+
+    cursor: pointer;
+
+}
+
+/* =========================
+   Mobile Menu
+========================= */
+
+.mobile-menu {
+
+    position: absolute;
+
+    top: 100%;
+
+    left: 0;
+
+    width: 100%;
+
+
+    background: #000000;
+
+    border-top: 1px solid rgba(255, 255, 255, .08);
+
+    padding: 25px 0;
+
+}
+
+.mobile-menu ul {
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+
+    text-align: center;
+
+}
+
+.mobile-menu a {
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 18px;
+
+    transition: .3s;
+
+}
+
+.mobile-menu a:hover {
+
+    color: #00f5ff;
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:992px) {
+
+    .desktop-menu {
+
+        display: none;
+
+    }
+
+    .menu-btn {
+
+        display: block;
+
+    }
+
+    .logo-img {
+
+        width: 140px;
+
+    }
+
+    .logo-small {
+
+        width: 120px;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .navbar {
+
+        padding: 18px 6%;
+
+    }
+
+    .navbar-scrolled {
+
+        padding: 12px 6%;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .logo-img {
+
+        width: 120px;
+
+    }
+
+    .logo-small {
+
+        width: 100px;
+
+    }
+
+}

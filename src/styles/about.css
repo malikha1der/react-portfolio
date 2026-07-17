@@ -1,0 +1,281 @@
+/* =========================
+   About Section
+========================= */
+
+.about {
+    margin: 5px 5px;
+    position: relative;
+
+    padding: 120px 60px;
+
+    overflow: hidden;
+
+}
+
+.about-container {
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 1fr;
+
+    align-items: center;
+
+    gap: 70px;
+
+}
+
+/* =========================
+   Left Side
+========================= */
+
+.about-text h3 {
+
+    font-size: 42px;
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    line-height: 1.2;
+
+}
+
+.about-text p {
+
+    color: #b5b5b5;
+
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    margin-bottom: 22px;
+
+}
+
+.about-buttons {
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-top: 40px;
+
+}
+
+/* =========================
+   Right Side
+========================= */
+
+.about-cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 25px;
+
+}
+
+/* =========================
+   Card
+========================= */
+
+.about-card {
+
+    position: relative;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, .05);
+
+    backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, .08);
+
+    overflow: hidden;
+
+    transition: .4s ease;
+
+    z-index: 1;
+
+}
+
+/* Animated Border */
+
+.about-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -2px;
+
+    background: conic-gradient(#00f5ff,
+
+            #7b2cff,
+
+            #00f5ff,
+
+            #7b2cff,
+
+            #00f5ff);
+
+    animation: rotateBorder 6s linear infinite;
+
+    z-index: -2;
+
+}
+
+.about-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 2px;
+
+    background: #111111;
+
+    border-radius: 20px;
+
+    z-index: -1;
+
+}
+
+.about-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow:
+
+        0 0 20px rgba(0, 245, 255, .20),
+
+        0 0 45px rgba(123, 44, 255, .12);
+
+}
+
+.about-card h3 {
+
+    color: #00f5ff;
+
+    font-size: 23px;
+
+    margin-bottom: 12px;
+
+}
+
+.about-card h4 {
+
+    color: #ffffff;
+
+    font-size: 19px;
+
+    margin-bottom: 15px;
+
+}
+
+.about-card p {
+
+    color: #bdbdbd;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+}
+
+/* =========================
+   Animation
+========================= */
+
+@keyframes rotateBorder {
+
+    from {
+
+        transform: rotate(0deg);
+
+    }
+
+    to {
+
+        transform: rotate(360deg);
+
+    }
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:992px) {
+
+    .about-container {
+
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+
+    }
+
+    .about-text {
+
+        text-align: center;
+
+    }
+
+    .about-buttons {
+
+        justify-content: center;
+
+    }
+
+}
+
+@media(max-width:768px) {
+
+    .about-cards {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .about-text h3 {
+
+        font-size: 34px;
+
+    }
+
+}
+
+@media(max-width:480px) {
+
+    .about {
+
+        padding: 90px 0;
+
+    }
+
+    .about-card {
+
+        padding: 25px;
+
+    }
+
+    .about-text h3 {
+
+        font-size: 30px;
+
+    }
+
+    .about-text p {
+
+        font-size: 16px;
+
+    }
+
+}

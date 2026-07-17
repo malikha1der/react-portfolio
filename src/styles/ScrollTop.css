@@ -1,0 +1,151 @@
+/* =========================
+   Scroll To Top Button
+========================= */
+
+.scroll-top{
+
+    position:fixed;
+
+    right:35px;
+
+    bottom:35px;
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #00f5ff,
+        #7b2cff
+    );
+
+    color:#ffffff;
+
+    font-size:20px;
+
+    box-shadow:
+        0 0 18px rgba(0,245,255,.45),
+        0 0 35px rgba(123,44,255,.30);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(30px) scale(.8);
+
+    transition:
+        opacity .35s ease,
+        transform .35s ease,
+        visibility .35s ease,
+        box-shadow .35s ease;
+
+    z-index:9998;
+
+}
+
+/* =========================
+   Show State
+========================= */
+
+.scroll-top.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0) scale(1);
+
+}
+
+/* =========================
+   Hover
+========================= */
+
+.scroll-top:hover{
+
+    transform:translateY(-6px) scale(1.08);
+
+    box-shadow:
+        0 0 25px rgba(0,245,255,.70),
+        0 0 50px rgba(123,44,255,.50);
+
+}
+
+/* =========================
+   Active
+========================= */
+
+.scroll-top:active{
+
+    transform:scale(.95);
+
+}
+
+/* =========================
+   Icon Animation
+========================= */
+
+.scroll-top svg{
+
+    transition:transform .3s ease;
+
+}
+
+.scroll-top:hover svg{
+
+    transform:translateY(-2px);
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:768px){
+
+    .scroll-top{
+
+        width:52px;
+
+        height:52px;
+
+        right:20px;
+
+        bottom:20px;
+
+        font-size:18px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .scroll-top{
+
+        width:48px;
+
+        height:48px;
+
+        right:16px;
+
+        bottom:16px;
+
+        font-size:16px;
+
+    }
+
+}

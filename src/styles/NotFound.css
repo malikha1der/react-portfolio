@@ -1,0 +1,155 @@
+/* =========================
+   404 Page
+========================= */
+
+.not-found{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:120px 20px;
+
+    background:#050505;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+/* =========================
+   Content
+========================= */
+
+.not-found-content{
+
+    max-width:700px;
+
+    width:100%;
+
+}
+
+/* =========================
+   404 Number
+========================= */
+
+.not-found-content h1{
+
+    font-size:180px;
+
+    line-height:1;
+
+    color:#00f5ff;
+
+    text-shadow:
+        0 0 20px rgba(0,245,255,.45),
+        0 0 60px rgba(0,245,255,.25);
+
+    margin-bottom:10px;
+
+}
+
+/* =========================
+   Heading
+========================= */
+
+.not-found-content h2{
+
+    font-size:48px;
+
+    color:#ffffff;
+
+    margin-bottom:20px;
+
+}
+
+/* =========================
+   Description
+========================= */
+
+.not-found-content p{
+
+    color:#b5b5b5;
+
+    font-size:18px;
+
+    line-height:1.8;
+
+    max-width:550px;
+
+    margin:0 auto 40px;
+
+}
+
+/* =========================
+   Button
+========================= */
+
+.not-found .btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:768px){
+
+    .not-found-content h1{
+
+        font-size:120px;
+
+    }
+
+    .not-found-content h2{
+
+        font-size:34px;
+
+    }
+
+    .not-found-content p{
+
+        font-size:16px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .not-found{
+
+        padding:100px 20px;
+
+    }
+
+    .not-found-content h1{
+
+        font-size:90px;
+
+    }
+
+    .not-found-content h2{
+
+        font-size:28px;
+
+    }
+
+    .not-found-content p{
+
+        font-size:15px;
+
+    }
+
+}

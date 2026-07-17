@@ -1,0 +1,58 @@
+* {
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+html {
+
+    scroll-behavior:smooth;
+
+}
+
+
+
+body {
+
+
+    overflow-x:hidden;
+
+}
+
+
+
+img {
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+
+button,
+
+input,
+
+textarea {
+
+    font-family:inherit;
+
+}
+
+
+
+::selection {
+
+    background:#00f5ff;
+
+    color:black;
+
+}
