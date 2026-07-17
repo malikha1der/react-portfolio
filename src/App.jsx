@@ -8,8 +8,7 @@ import ScrollTop from "./components/ScrollTop";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import "./styles/loadingSpinner.css";
-
+import "./styles/LoadingSpinner.css";
 const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Skills = lazy(() => import("./pages/Skills"));
