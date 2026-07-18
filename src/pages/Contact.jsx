@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { motion } from "framer-motion";
 
@@ -34,6 +34,23 @@ function Contact() {
     const [success, setSuccess] = useState("");
 
     const [loading, setLoading] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+
+        const checkMobile = () => {
+
+            setIsMobile(window.innerWidth <= 768);
+
+        };
+
+        checkMobile();
+
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+
+    }, []);
 
     const handleChange = (e) => {
 
@@ -110,7 +127,7 @@ function Contact() {
             await emailjs.send(
 
 
-                 /*--------------------- Service ID---------------------------- */
+                /*--------------------- Service ID---------------------------- */
                 "service_8anc4l4",
 
                 "template_g624qwg",
@@ -164,7 +181,7 @@ function Contact() {
         }
 
     };
-        return (
+    return (
 
         <section
 
@@ -192,15 +209,37 @@ function Contact() {
 
                     className="contact-info"
 
-                    initial={{
-                        opacity: 0,
-                        x: -50
-                    }}
+                    initial={
 
-                    whileInView={{
-                        opacity: 1,
-                        x: 0
-                    }}
+                        isMobile
+
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 0,
+
+                                x: -50
+
+                            }
+
+                    }
+
+                    whileInView={
+
+                        isMobile
+
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 1,
+
+                                x: 0
+
+                            }
+
+                    }
 
                     transition={{
                         duration: .6
@@ -322,15 +361,37 @@ function Contact() {
 
                     onSubmit={handleSubmit}
 
-                    initial={{
-                        opacity: 0,
-                        x: 50
-                    }}
+                    initial={
 
-                    whileInView={{
-                        opacity: 1,
-                        x: 0
-                    }}
+                        isMobile
+
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 0,
+
+                                x: 50
+
+                            }
+
+                    }
+
+                    whileInView={
+
+                        isMobile
+
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 1,
+
+                                x: 0
+
+                            }
+
+                    }
 
                     transition={{
                         duration: .6
