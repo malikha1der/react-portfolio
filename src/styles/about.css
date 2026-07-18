@@ -1,4 +1,3 @@
-
 /* =========================
    About Section
 ========================= */
@@ -217,7 +216,7 @@
 
 @media(max-width:992px) {
 
-        
+
     .about-container {
 
         grid-template-columns: 1fr;
@@ -255,6 +254,7 @@
     }
 
 }
+
 /*removel of border light*/
 
 /* @media (max-width:768px){
@@ -268,88 +268,87 @@
     }
 
 } */
- @media (max-width:768px){
+@media (max-width:768px) {
 
 
 
-    .about-card::before{
+    .about-card::before {
 
         display: none;
 
     }
-    .about-card:hover{
+
+    .about-card:hover {
         transform: none;
 
         box-shadow: none;
 
-        border-color: rgba(255,255,255,.08);
+        border-color: rgba(255, 255, 255, .08);
     }
 
 }
-@media (max-width:480px){
 
-    .about{
-        padding: 90px 20px;
-        overflow-x: hidden;
+@media (max-width:480px) {
+
+    .about {
+        padding-top: 10%;
     }
 
-    .about-container{
-        width:100%;
-        max-width:100%;
-        display:flex;
-        flex-direction:column;
-        gap:40px;
-        height:auto;
+    .about-container {
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
-    .about-text{
+    .about-text {
+
+
         
-        width:100%;
-        margin:0 10px;
-        padding:0;
-        text-align:center;
+
     }
 
-    .about-text h3{
-        font-size:30px;
+    .about-text h3 {
+        font-size: 30px;
     }
 
-    .about-text p{
+    .about-text p {
         
-        width:100%;
-        
-        font-size:16px;
-        line-height:1.8;
-        word-break:break-word;
+
+
+        font-size: 16px;
+        line-height: 1.8;
+        word-wrap: wrap;
     }
 
     .about-buttons {
-        justify-content:center;
-        
+        justify-content: center;
+
     }
 
 
-    .about-cards{
-        grid-template-columns:1fr;
-        width:100%;
+    .about-cards {
+        grid-template-columns: 1fr;
+        width: 100%;
     }
 
-    .about-card{
-        width:100%;
-        padding:22px;
-        box-sizing:border-box;
+    .about-card {
+        width: 100%;
+        padding: 22px;
+        box-sizing: border-box;
     }
 
     /* Mobile me animated border aur hover remove */
 
-    .about-card::before{
-        animation:none;
-        background:none;
+    .about-card::before {
+        animation: none;
+        background: none;
     }
 
-    .about-card:hover{
-        transform:none;
-        box-shadow:none;
+    .about-card:hover {
+        transform: none;
+        box-shadow: none;
     }
 
 }
