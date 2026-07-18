@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 
@@ -12,40 +12,65 @@ function Navbar() {
 
     const [active, setActive] = useState("home");
 
+    const tickingRef = useRef(false);
+
+    // Scrolled background change — throttled with requestAnimationFrame
     useEffect(() => {
 
         const handleScroll = () => {
 
-            setScrolled(window.scrollY > 60);
+            if (!tickingRef.current) {
 
-            const sections = document.querySelectorAll("section");
+                window.requestAnimationFrame(() => {
 
-            let current = "home";
+                    setScrolled(window.scrollY > 60);
 
-            sections.forEach((section) => {
+                    tickingRef.current = false;
 
-                const sectionTop = section.offsetTop - 120;
-                const sectionHeight = section.offsetHeight;
+                });
 
-                if (
-                    window.scrollY >= sectionTop &&
-                    window.scrollY < sectionTop + sectionHeight
-                ) {
-                    current = section.getAttribute("id");
-                }
+                tickingRef.current = true;
 
-            });
-
-            setActive(current);
+            }
 
         };
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
 
         handleScroll();
 
-        return () =>
-            window.removeEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+
+    }, []);
+
+    // Active section detection — IntersectionObserver (no scroll-loop, no DOM query per scroll)
+    useEffect(() => {
+
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        setActive(entry.target.getAttribute("id"));
+
+                    }
+
+                });
+
+            },
+            {
+                rootMargin: "-120px 0px -60% 0px",
+                threshold: 0
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        return () => observer.disconnect();
 
     }, []);
 
