@@ -29,6 +29,8 @@
    Left Side
 ========================= */
 
+
+
 .about-text h3 {
 
     font-size: 42px;
@@ -282,30 +284,64 @@
     }
 
 }
-@media(max-width:480px) {
-    
-    .about {
+@media (max-width:480px){
 
-        padding: 90px 0;
-
+    .about{
+        padding: 90px 20px;
+        overflow-x: hidden;
     }
 
-    .about-card {
-
-        padding: 25px;
-
-    }
-    
-    .about-text h3 {
-
-        font-size: 30px;
-
+    .about-container{
+        width:100%;
+        max-width:100%;
+        display:flex;
+        flex-direction:column;
+        gap:40px;
+        height:auto;
     }
 
-    .about-text p {
+    .about-text{
+        width:100%;
+        margin:0;
+        padding:0;
+        text-align:center;
+    }
 
-        font-size: 16px;
+    .about-text h3{
+        font-size:30px;
+    }
 
+    .about-text p{
+        font-size:16px;
+        line-height:1.8;
+        word-break:break-word;
+    }
+
+    .about-buttons{
+        justify-content:center;
+    }
+
+    .about-cards{
+        grid-template-columns:1fr;
+        width:100%;
+    }
+
+    .about-card{
+        width:100%;
+        padding:22px;
+        box-sizing:border-box;
+    }
+
+    /* Mobile me animated border aur hover remove */
+
+    .about-card::before{
+        animation:none;
+        background:none;
+    }
+
+    .about-card:hover{
+        transform:none;
+        box-shadow:none;
     }
 
 }
