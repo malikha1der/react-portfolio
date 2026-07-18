@@ -3,10 +3,12 @@
 ========================= */
 
 .about {
-    margin: 5px 5px;
+
     position: relative;
 
     padding: 120px 60px;
+
+    margin: 0;
 
     overflow: hidden;
 
@@ -90,17 +92,19 @@
 
     border-radius: 22px;
 
-    background: rgba(255, 255, 255, .05);
+    background: rgba(255,255,255,.05);
 
     backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255,255,255,.08);
 
     overflow: hidden;
 
     transition: .4s ease;
 
     z-index: 1;
+
+    box-sizing: border-box;
 
 }
 
@@ -114,15 +118,19 @@
 
     inset: -2px;
 
-    background: conic-gradient(#00f5ff,
+    background: conic-gradient(
 
-            #7b2cff,
+        #00f5ff,
 
-            #00f5ff,
+        #7b2cff,
 
-            #7b2cff,
+        #00f5ff,
 
-            #00f5ff);
+        #7b2cff,
+
+        #00f5ff
+
+    );
 
     animation: rotateBorder 6s linear infinite;
 
@@ -152,9 +160,9 @@
 
     box-shadow:
 
-        0 0 20px rgba(0, 245, 255, .20),
+        0 0 20px rgba(0,245,255,.20),
 
-        0 0 45px rgba(123, 44, 255, .12);
+        0 0 45px rgba(123,44,255,.12);
 
 }
 
@@ -212,7 +220,13 @@
    Responsive
 ========================= */
 
-@media(max-width:992px) {
+@media (max-width:992px) {
+
+    .about {
+
+        padding: 100px 30px;
+
+    }
 
     .about-container {
 
@@ -236,7 +250,13 @@
 
 }
 
-@media(max-width:768px) {
+@media (max-width:768px) {
+
+    .about {
+
+        padding: 80px 20px;
+
+    }
 
     .about-cards {
 
@@ -250,19 +270,57 @@
 
     }
 
-}
+    .about-buttons {
 
-@media(max-width:480px) {
+        width: 100%;
 
-    .about {
-
-        padding: 90px 0;
+        justify-content: center;
 
     }
 
     .about-card {
 
-        padding: 25px;
+        width: 100%;
+
+    }
+
+    /* Mobile Performance */
+
+    .about-card::before {
+
+        animation: none;
+
+    }
+
+    .about-card:hover {
+
+        transform: none;
+
+        box-shadow: none;
+
+    }
+
+}
+
+@media (max-width:480px) {
+
+    .about {
+
+        padding: 70px 18px;
+
+    }
+
+    .about-container {
+
+        width: 100%;
+
+        overflow: hidden;
+
+    }
+
+    .about-text {
+
+        width: 100%;
 
     }
 
@@ -275,6 +333,22 @@
     .about-text p {
 
         font-size: 16px;
+
+    }
+
+    .about-buttons {
+
+        flex-direction: column;
+
+        align-items: center;
+
+        width: 100%;
+
+    }
+
+    .about-card {
+
+        padding: 22px;
 
     }
 
