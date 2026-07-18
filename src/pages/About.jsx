@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { motion } from "framer-motion";
 
 import SectionTitle from "../components/SectionTitle";
@@ -5,6 +7,24 @@ import Button from "../components/Button";
 import heroData from "../data/heroData";
 
 function About() {
+
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+
+        const checkMobile = () => {
+
+            setIsMobile(window.innerWidth <= 768);
+
+        };
+
+        checkMobile();
+
+        window.addEventListener("resize", checkMobile);
+
+        return () => window.removeEventListener("resize", checkMobile);
+
+    }, []);
 
     const aboutCards = [
 
@@ -63,22 +83,56 @@ function About() {
 
                     className="about-text"
 
-                    initial={{
-                        opacity: 0,
-                        x: -60
-                    }}
+                    initial={
 
-                    whileInView={{
-                        opacity: 1,
-                        x: 0
-                    }}
+                        isMobile
 
-                    transition={{
-                        duration: 0.7
-                    }}
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 0,
+
+                                x: -60
+
+                            }
+
+                    }
+
+                    whileInView={
+
+                        isMobile
+
+                            ? { opacity: 1 }
+
+                            : {
+
+                                opacity: 1,
+
+                                x: 0
+
+                            }
+
+                    }
+
+                    transition={
+
+                        isMobile
+
+                            ? {}
+
+                            : {
+
+                                duration: 0.7
+
+                            }
+
+                    }
 
                     viewport={{
+
                         once: true
+
                     }}
 
                 >
@@ -139,28 +193,73 @@ function About() {
 
                                 className="about-card"
 
-                                initial={{
-                                    opacity: 0,
-                                    y: 40
-                                }}
+                                initial={
 
-                                whileInView={{
-                                    opacity: 1,
-                                    y: 0
-                                }}
+                                    isMobile
 
-                                transition={{
-                                    duration: 0.5,
-                                    delay: index * 0.15
-                                }}
+                                        ? { opacity: 1 }
+
+                                        : {
+
+                                            opacity: 0,
+
+                                            y: 40
+
+                                        }
+
+                                }
+
+                                whileInView={
+
+                                    isMobile
+
+                                        ? { opacity: 1 }
+
+                                        : {
+
+                                            opacity: 1,
+
+                                            y: 0
+
+                                        }
+
+                                }
+
+                                transition={
+
+                                    isMobile
+
+                                        ? {}
+
+                                        : {
+
+                                            duration: 0.5,
+
+                                            delay: index * 0.15
+
+                                        }
+
+                                }
 
                                 viewport={{
+
                                     once: true
+
                                 }}
 
-                                whileHover={{
-                                    y: -8
-                                }}
+                                whileHover={
+
+                                    isMobile
+
+                                        ? {}
+
+                                        : {
+
+                                            y: -8
+
+                                        }
+
+                                }
 
                             >
 
