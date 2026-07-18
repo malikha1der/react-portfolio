@@ -658,6 +658,20 @@ hero.css
         width: 100%;
 
     }
+    /* Disable orbit animation on mobile */
+
+.orbit-1,
+.orbit-2{
+
+    display: none;
+
+}
+.hero-ring,
+.hero-ring-2{
+    animation:none;
+    display: none;
+
+}
 
 }
 
