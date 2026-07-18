@@ -2,6 +2,13 @@
    About Section
 ========================= */
 
+.about,
+.about *,
+.about *::before,
+.about *::after {
+    box-sizing: border-box;
+}
+
 .about {
     margin: 5px 5px;
     position: relative;
@@ -255,22 +262,7 @@
 
 }
 
-/*removel of border light*/
-
-/* @media (max-width:768px){
-
-    .about-card::before{
-
-        animation: none;
-
-        background: none;
-
-    }
-
-} */
 @media (max-width:768px) {
-
-
 
     .about-card::before {
 
@@ -293,6 +285,8 @@
     .about {
         padding: 90px 20px;
         overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
     }
 
     .about-container {
@@ -305,13 +299,11 @@
     }
 
     .about-text {
-
-        
-        
-        padding: 0;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 10px;
         text-align: center;
-        border: 2px solid red;
-
     }
 
     .about-text h3 {
@@ -319,12 +311,12 @@
     }
 
     .about-text p {
-        border: 2px solid rgb(0, 255, 34);
-        
-
+        width: 100%;
+        max-width: 100%;
         font-size: 16px;
         line-height: 1.8;
         word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .about-buttons {
@@ -341,7 +333,6 @@
     .about-card {
         width: 100%;
         padding: 22px;
-        box-sizing: border-box;
     }
 
     /* Mobile me animated border aur hover remove */

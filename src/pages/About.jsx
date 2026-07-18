@@ -8,7 +8,9 @@ import heroData from "../data/heroData";
 
 function About() {
 
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(
+        () => typeof window !== "undefined" && window.innerWidth <= 768
+    );
 
     useEffect(() => {
 
@@ -87,7 +89,7 @@ function About() {
 
                         isMobile
 
-                            ? { opacity: 1 }
+                            ? { opacity: 1, x: 0 }
 
                             : {
 
@@ -103,7 +105,7 @@ function About() {
 
                         isMobile
 
-                            ? { opacity: 1 }
+                            ? { opacity: 1, x: 0 }
 
                             : {
 
