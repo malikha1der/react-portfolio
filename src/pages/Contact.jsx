@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { motion } from "framer-motion";
 
-import emailjs from "@emailjs/browser";
+
 
 import {FaEnvelope,FaPhoneAlt,FaMapMarkerAlt,FaGithub,FaLinkedin} from "react-icons/fa";
 
@@ -99,7 +99,7 @@ const handleSubmit = async (e) => {
     setLoading(true);
 
     try {
-
+        const emailjs = (await import("@emailjs/browser")).default;
         await emailjs.send(
 
 

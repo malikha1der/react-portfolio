@@ -136,6 +136,12 @@ function Navbar() {
 
                             alt="Malik Logo"
 
+                            width="180"
+
+                            height="60"
+
+                            fetchpriority="high"
+
                             className={`logo-img ${scrolled ? "logo-small" : ""}`}
 
                         />
@@ -187,6 +193,8 @@ function Navbar() {
                 className="menu-btn"
 
                 onClick={() => setOpen(!open)}
+
+                aria-label="Toggle menu"
 
             >
 

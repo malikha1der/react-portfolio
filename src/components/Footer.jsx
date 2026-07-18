@@ -26,6 +26,10 @@ function Footer() {
 
                         alt="Logo"
 
+                        width="150"
+
+                        height="50"
+
                         className="footer-logo"
 
                     />
@@ -103,6 +107,8 @@ function Footer() {
 
                             rel="noreferrer"
 
+                            aria-label="GitHub Profile"
+
                         >
 
                             <FaGithub />
@@ -117,6 +123,8 @@ function Footer() {
 
                             rel="noreferrer"
 
+                            aria-label="LinkedIn Profile"
+
                         >
 
                             <FaLinkedin />
@@ -130,6 +138,8 @@ function Footer() {
                         href="#home"
 
                         className="back-top"
+
+                        aria-label="Back To Top"
 
                     >
 

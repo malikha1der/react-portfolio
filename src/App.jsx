@@ -1,5 +1,3 @@
-import { lazy, Suspense } from "react";
-
 import Loader from "./components/Loader";
 import LoadingSpinner from "./components/LoadingSpinner";
 import ScrollProgress from "./components/ScrollProgress";
@@ -9,11 +7,12 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
 import "./styles/LoadingSpinner.css";
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Skills = lazy(() => import("./pages/Skills"));
-const Projects = lazy(() => import("./pages/Projects"));
-const Contact = lazy(() => import("./pages/Contact"));
+
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Skills from "./pages/Skills";
+import Projects from "./pages/Projects";
+import Contact from "./pages/Contact";
 
 function App() {
 
@@ -29,19 +28,15 @@ function App() {
 
             <main>
 
-                <Suspense fallback={<LoadingSpinner />}>
+                <Home />
 
-                    <Home />
+                <About />
 
-                    <About />
+                <Skills />
 
-                    <Skills />
+                <Projects />
 
-                    <Projects />
-
-                    <Contact />
-
-                </Suspense>
+                <Contact />
 
             </main>
 
