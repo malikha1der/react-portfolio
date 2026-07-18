@@ -145,13 +145,13 @@ function About() {
 
                     <p>
 
-                        I'm Malik, a pass.
+                        I'm Malik, a passionate Frontend React Developer and BS Computer Science student. I enjoy creating modern, responsive and user-friendly web applications with clean code and attractive user interfaces.
 
                     </p>
 
                     <p>
 
-                        My goal is to build high-quality digital 
+                        My goal is to build high-quality digital products that not only look professional but also deliver excellent performance and user experience. I continuously learn new technologies and improve my development skills through real-world projects.
 
                     </p>
 
