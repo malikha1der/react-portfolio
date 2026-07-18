@@ -270,6 +270,8 @@
 } */
  @media (max-width:768px){
 
+
+
     .about-card::before{
 
         display: none;
@@ -302,7 +304,7 @@
 
     .about-text{
         width:100%;
-        margin:0;
+        margin:0 10px;
         padding:0;
         text-align:center;
     }
