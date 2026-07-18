@@ -285,7 +285,50 @@
     }
 
 }
+/*removel of hover light*/
+@media (max-width:768px){
 
+    .skill-card::before{
+
+        animation: none;
+
+        background: none;
+
+    }
+
+    .skill-card:hover{
+
+        transform: none;
+
+        box-shadow: none;
+
+        border-color: rgba(255,255,255,.08);
+
+    }
+
+    .skill-card:hover .skill-icon{
+
+        transform: none;
+
+        box-shadow: none;
+
+        color: inherit;
+
+    }
+
+}
+/*removel of border light*/
+@media (max-width:768px){
+
+    .skill-card::before{
+
+        animation: none;
+
+        background: none;
+
+    }
+
+}
 @media(max-width:480px){
 
     .skill-card h3{

@@ -1,571 +1,503 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import { motion } from "framer-motion";
 
 import emailjs from "@emailjs/browser";
 
-import {
-    FaEnvelope,
-    FaPhoneAlt,
-    FaMapMarkerAlt,
-    FaGithub,
-    FaLinkedin
-} from "react-icons/fa";
+import {FaEnvelope,FaPhoneAlt,FaMapMarkerAlt,FaGithub,FaLinkedin} from "react-icons/fa";
 
-import SectionTitle from "../components/SectionTitle";
-import Button from "../components/Button";
+import SectionTitle from "../components/SectionTitle";import Button from "../components/Button";
 
 function Contact() {
 
-    const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
 
-        name: "",
+    name: "",
 
-        email: "",
+    email: "",
 
-        subject: "",
+    subject: "",
 
-        message: ""
+    message: ""
+
+});
+
+const [errors, setErrors] = useState({});
+
+const [success, setSuccess] = useState("");
+
+const [loading, setLoading] = useState(false);
+
+const handleChange = (e) => {
+
+    setFormData({
+
+        ...formData,
+
+        [e.target.name]: e.target.value
 
     });
 
-    const [errors, setErrors] = useState({});
+};
 
-    const [success, setSuccess] = useState("");
+const validateForm = () => {
 
-    const [loading, setLoading] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    let newErrors = {};
 
-    useEffect(() => {
+    if (!formData.name.trim()) {
 
-        const checkMobile = () => {
+        newErrors.name = "Name is required";
 
-            setIsMobile(window.innerWidth <= 768);
+    }
 
-        };
+    if (!formData.email.trim()) {
 
-        checkMobile();
+        newErrors.email = "Email is required";
 
-        window.addEventListener("resize", checkMobile);
+    }
 
-        return () => window.removeEventListener("resize", checkMobile);
+    else if (!/\S+@\S+\.\S+/.test(formData.email)) {
 
-    }, []);
+        newErrors.email = "Please enter a valid email address";
 
-    const handleChange = (e) => {
+    }
+
+    if (!formData.subject.trim()) {
+
+        newErrors.subject = "Subject is required";
+
+    }
+
+    if (!formData.message.trim()) {
+
+        newErrors.message = "Message is required";
+
+    }
+
+    return newErrors;
+
+};
+
+const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    const validationErrors = validateForm();
+
+    if (Object.keys(validationErrors).length > 0) {
+
+        setErrors(validationErrors);
+
+        setSuccess("");
+
+        return;
+
+    }
+
+    setErrors({});
+
+    setLoading(true);
+
+    try {
+
+        await emailjs.send(
+
+
+             /*--------------------- Service ID---------------------------- */
+            "service_8anc4l4",
+
+            "template_g624qwg",
+
+            {
+
+                name: formData.name,
+
+                email: formData.email,
+
+                subject: formData.subject,
+
+                message: formData.message,
+
+                time: new Date().toLocaleString()
+
+            },
+
+            "wzaxxIRdEwK_yuzCG"
+
+        );
+
+        setSuccess("✅ Message sent successfully!");
 
         setFormData({
 
-            ...formData,
+            name: "",
 
-            [e.target.name]: e.target.value
+            email: "",
+
+            subject: "",
+
+            message: ""
 
         });
 
-    };
+    }
 
-    const validateForm = () => {
+    catch (error) {
 
-        let newErrors = {};
+        console.error(error);
 
-        if (!formData.name.trim()) {
+        setSuccess("❌ Failed to send message. Please try again.");
 
-            newErrors.name = "Name is required";
+    }
 
-        }
+    finally {
 
-        if (!formData.email.trim()) {
+        setLoading(false);
 
-            newErrors.email = "Email is required";
+    }
 
-        }
+};
+    return (
 
-        else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    <section
 
-            newErrors.email = "Please enter a valid email address";
+        id="contact"
 
-        }
+        className="contact"
 
-        if (!formData.subject.trim()) {
+    >
 
-            newErrors.subject = "Subject is required";
+        <SectionTitle
 
-        }
+            subtitle="Contact Me"
 
-        if (!formData.message.trim()) {
+            title="Let's Work Together"
 
-            newErrors.message = "Message is required";
+            description="Have a project in mind or want to discuss an opportunity? Feel free to contact me."
 
-        }
+        />
 
-        return newErrors;
+        <div className="contact-container">
 
-    };
+            {/* Left Side */}
 
-    const handleSubmit = async (e) => {
+            <motion.div
 
-        e.preventDefault();
+                className="contact-info"
 
-        const validationErrors = validateForm();
+                initial={{
+                    opacity: 0,
+                    x: -50
+                }}
 
-        if (Object.keys(validationErrors).length > 0) {
+                whileInView={{
+                    opacity: 1,
+                    x: 0
+                }}
 
-            setErrors(validationErrors);
+                transition={{
+                    duration: .6
+                }}
 
-            setSuccess("");
+                viewport={{
+                    once: true
+                }}
 
-            return;
+            >
 
-        }
+                <h3>
 
-        setErrors({});
+                    Get In Touch
 
-        setLoading(true);
+                </h3>
 
-        try {
+                <p>
 
-            await emailjs.send(
+                    I'm always interested in new opportunities,
+                    collaborations and exciting projects.
+                    Feel free to contact me anytime.
 
+                </p>
 
-                /*--------------------- Service ID---------------------------- */
-                "service_8anc4l4",
+                <div className="contact-card">
 
-                "template_g624qwg",
+                    <FaEnvelope className="contact-icon" />
+
+                    <div>
+
+                        <h4>Email</h4>
+
+                        <span>
+
+                            malikhaider48008@gmail.com
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div className="contact-card">
+
+                    <FaPhoneAlt className="contact-icon" />
+
+                    <div>
+
+                        <h4>Phone</h4>
+
+                        <span>
+
+                            +92 ***********
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div className="contact-card">
+
+                    <FaMapMarkerAlt className="contact-icon" />
+
+                    <div>
+
+                        <h4>Location</h4>
+
+                        <span>
+
+                            Islamabad, Pakistan
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div className="contact-social">
+
+                    <a
+
+                        href="https://github.com/malikha1der"
+
+                        target="_blank"
+
+                        rel="noreferrer"
+
+                    >
+
+                        <FaGithub />
+
+                    </a>
+
+                    <a
+
+                        href="https://www.linkedin.com/in/malik-haider-1a5017393"
+
+                        target="_blank"
+
+                        rel="noreferrer"
+
+                    >
+
+                        <FaLinkedin />
+
+                    </a>
+
+                </div>
+
+            </motion.div>
+
+            {/* Right Side */}
+
+            <motion.form
+
+                className="contact-form"
+
+                onSubmit={handleSubmit}
+
+                initial={{
+                    opacity: 0,
+                    x: 50
+                }}
+
+                whileInView={{
+                    opacity: 1,
+                    x: 0
+                }}
+
+                transition={{
+                    duration: .6
+                }}
+
+                viewport={{
+                    once: true
+                }}
+
+            >
+
+                <input
+
+                    type="text"
+
+                    name="name"
+
+                    placeholder="Your Name"
+
+                    value={formData.name}
+
+                    onChange={handleChange}
+
+                    className={errors.name ? "error" : ""}
+
+                />
 
                 {
 
-                    name: formData.name,
+                    errors.name && (
 
-                    email: formData.email,
+                        <small className="form-error">
 
-                    subject: formData.subject,
+                            {errors.name}
 
-                    message: formData.message,
+                        </small>
 
-                    time: new Date().toLocaleString()
+                    )
 
-                },
+                }
 
-                "wzaxxIRdEwK_yuzCG"
+                <input
 
-            );
+                    type="email"
 
-            setSuccess("✅ Message sent successfully!");
+                    name="email"
 
-            setFormData({
+                    placeholder="Your Email"
 
-                name: "",
+                    value={formData.email}
 
-                email: "",
+                    onChange={handleChange}
 
-                subject: "",
+                    className={errors.email ? "error" : ""}
 
-                message: ""
+                />
 
-            });
+                {
 
-        }
+                    errors.email && (
 
-        catch (error) {
+                        <small className="form-error">
 
-            console.error(error);
+                            {errors.email}
 
-            setSuccess("❌ Failed to send message. Please try again.");
+                        </small>
 
-        }
+                    )
 
-        finally {
+                }
 
-            setLoading(false);
+                <input
 
-        }
+                    type="text"
 
-    };
-    return (
+                    name="subject"
 
-        <section
+                    placeholder="Subject"
 
-            id="contact"
+                    value={formData.subject}
 
-            className="contact"
+                    onChange={handleChange}
 
-        >
+                    className={errors.subject ? "error" : ""}
 
-            <SectionTitle
+                />
 
-                subtitle="Contact Me"
+                {
 
-                title="Let's Work Together"
+                    errors.subject && (
 
-                description="Have a project in mind or want to discuss an opportunity? Feel free to contact me."
+                        <small className="form-error">
 
-            />
+                            {errors.subject}
 
-            <div className="contact-container">
+                        </small>
 
-                {/* Left Side */}
+                    )
 
-                <motion.div
+                }
 
-                    className="contact-info"
+                <textarea
 
-                    initial={
+                    rows="7"
 
-                        isMobile
+                    name="message"
 
-                            ? { opacity: 1 }
+                    placeholder="Write your message..."
 
-                            : {
+                    value={formData.message}
 
-                                opacity: 0,
+                    onChange={handleChange}
 
-                                x: -50
+                    className={errors.message ? "error" : ""}
+
+                />
+
+                {
+
+                    errors.message && (
+
+                        <small className="form-error">
+
+                            {errors.message}
+
+                        </small>
+
+                    )
+
+                }
+
+                {
+
+                    success && (
+
+                        <p
+
+                            className={
+
+                                success.includes("✅")
+
+                                    ? "form-success"
+
+                                    : "form-error"
 
                             }
-
-                    }
-
-                    whileInView={
-
-                        isMobile
-
-                            ? { opacity: 1 }
-
-                            : {
-
-                                opacity: 1,
-
-                                x: 0
-
-                            }
-
-                    }
-
-                    transition={{
-                        duration: .6
-                    }}
-
-                    viewport={{
-                        once: true
-                    }}
-
-                >
-
-                    <h3>
-
-                        Get In Touch
-
-                    </h3>
-
-                    <p>
-
-                        I'm always interested in new opportunities,
-                        collaborations and exciting projects.
-                        Feel free to contact me anytime.
-
-                    </p>
-
-                    <div className="contact-card">
-
-                        <FaEnvelope className="contact-icon" />
-
-                        <div>
-
-                            <h4>Email</h4>
-
-                            <span>
-
-                                malikhaider48008@gmail.com
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div className="contact-card">
-
-                        <FaPhoneAlt className="contact-icon" />
-
-                        <div>
-
-                            <h4>Phone</h4>
-
-                            <span>
-
-                                +92 ***********
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div className="contact-card">
-
-                        <FaMapMarkerAlt className="contact-icon" />
-
-                        <div>
-
-                            <h4>Location</h4>
-
-                            <span>
-
-                                Islamabad, Pakistan
-
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                    <div className="contact-social">
-
-                        <a
-
-                            href="https://github.com/malikha1der"
-
-                            target="_blank"
-
-                            rel="noreferrer"
 
                         >
 
-                            <FaGithub />
+                            {success}
 
-                        </a>
+                        </p>
 
-                        <a
+                    )
 
-                            href="https://www.linkedin.com/in/malik-haider-1a5017393"
+                }
 
-                            target="_blank"
+                <Button
 
-                            rel="noreferrer"
+                    text={loading ? "Sending..." : "Send Message"}
 
-                        >
+                    type="submit"
 
-                            <FaLinkedin />
+                    disabled={loading}
 
-                        </a>
+                />
 
-                    </div>
+            </motion.form>
 
-                </motion.div>
+        </div>
 
-                {/* Right Side */}
+    </section>
 
-                <motion.form
-
-                    className="contact-form"
-
-                    onSubmit={handleSubmit}
-
-                    initial={
-
-                        isMobile
-
-                            ? { opacity: 1 }
-
-                            : {
-
-                                opacity: 0,
-
-                                x: 50
-
-                            }
-
-                    }
-
-                    whileInView={
-
-                        isMobile
-
-                            ? { opacity: 1 }
-
-                            : {
-
-                                opacity: 1,
-
-                                x: 0
-
-                            }
-
-                    }
-
-                    transition={{
-                        duration: .6
-                    }}
-
-                    viewport={{
-                        once: true
-                    }}
-
-                >
-
-                    <input
-
-                        type="text"
-
-                        name="name"
-
-                        placeholder="Your Name"
-
-                        value={formData.name}
-
-                        onChange={handleChange}
-
-                        className={errors.name ? "error" : ""}
-
-                    />
-
-                    {
-
-                        errors.name && (
-
-                            <small className="form-error">
-
-                                {errors.name}
-
-                            </small>
-
-                        )
-
-                    }
-
-                    <input
-
-                        type="email"
-
-                        name="email"
-
-                        placeholder="Your Email"
-
-                        value={formData.email}
-
-                        onChange={handleChange}
-
-                        className={errors.email ? "error" : ""}
-
-                    />
-
-                    {
-
-                        errors.email && (
-
-                            <small className="form-error">
-
-                                {errors.email}
-
-                            </small>
-
-                        )
-
-                    }
-
-                    <input
-
-                        type="text"
-
-                        name="subject"
-
-                        placeholder="Subject"
-
-                        value={formData.subject}
-
-                        onChange={handleChange}
-
-                        className={errors.subject ? "error" : ""}
-
-                    />
-
-                    {
-
-                        errors.subject && (
-
-                            <small className="form-error">
-
-                                {errors.subject}
-
-                            </small>
-
-                        )
-
-                    }
-
-                    <textarea
-
-                        rows="7"
-
-                        name="message"
-
-                        placeholder="Write your message..."
-
-                        value={formData.message}
-
-                        onChange={handleChange}
-
-                        className={errors.message ? "error" : ""}
-
-                    />
-
-                    {
-
-                        errors.message && (
-
-                            <small className="form-error">
-
-                                {errors.message}
-
-                            </small>
-
-                        )
-
-                    }
-
-                    {
-
-                        success && (
-
-                            <p
-
-                                className={
-
-                                    success.includes("✅")
-
-                                        ? "form-success"
-
-                                        : "form-error"
-
-                                }
-
-                            >
-
-                                {success}
-
-                            </p>
-
-                        )
-
-                    }
-
-                    <Button
-
-                        text={loading ? "Sending..." : "Send Message"}
-
-                        type="submit"
-
-                        disabled={loading}
-
-                    />
-
-                </motion.form>
-
-            </div>
-
-        </section>
-
-    );
+);
 
 }
 

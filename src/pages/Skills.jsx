@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import { motion } from "framer-motion";
 
 import {
@@ -20,24 +18,6 @@ import {
 import SectionTitle from "../components/SectionTitle";
 
 function Skills() {
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-
-        const checkMobile = () => {
-
-            setIsMobile(window.innerWidth <= 768);
-
-        };
-
-        checkMobile();
-
-        window.addEventListener("resize", checkMobile);
-
-        return () => window.removeEventListener("resize", checkMobile);
-
-    }, []);
 
     const skills = [
 
@@ -126,73 +106,28 @@ function Skills() {
 
                             className="skill-card"
 
-                            initial={
-
-                                isMobile
-
-                                    ? { opacity: 1 }
-
-                                    : {
-
-                                        opacity: 0,
-
-                                        y: 40
-
-                                    }
-
-                            }
-
-                            whileInView={
-
-                                isMobile
-
-                                    ? { opacity: 1 }
-
-                                    : {
-
-                                        opacity: 1,
-
-                                        y: 0
-
-                                    }
-
-                            }
-
-                            transition={
-
-                                isMobile
-
-                                    ? {}
-
-                                    : {
-
-                                        duration: 0.5,
-
-                                        delay: index * 0.08
-
-                                    }
-
-                            }
-
-                            viewport={{
-
-                                once: true
-
+                            initial={{
+                                opacity: 0,
+                                y: 40
                             }}
 
-                            whileHover={
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
 
-                                isMobile
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.08
+                            }}
 
-                                    ? {}
+                            viewport={{
+                                once: true
+                            }}
 
-                                    : {
-
-                                        y: -8
-
-                                    }
-
-                            }
+                            whileHover={{
+                                y: -8
+                            }}
 
                         >
 
@@ -212,40 +147,20 @@ function Skills() {
 
                                 <motion.span
 
-                                    initial={
+                                    initial={{
+                                        width: 0
+                                    }}
 
-                                        isMobile
+                                    whileInView={{
+                                        width: `${skill.level}%`
+                                    }}
 
-                                            ? { width: `${skill.level}%` }
-
-                                            : { width: 0 }
-
-                                    }
-
-                                    whileInView={
-
-                                        isMobile
-
-                                            ? { width: `${skill.level}%` }
-
-                                            : { width: `${skill.level}%` }
-
-                                    }
-
-                                    transition={
-
-                                        isMobile
-
-                                            ? {}
-
-                                            : { duration: 1 }
-
-                                    }
+                                    transition={{
+                                        duration: 1
+                                    }}
 
                                     viewport={{
-
                                         once: true
-
                                     }}
 
                                 />

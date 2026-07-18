@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { useEffect, useState } from "react";
-
 import {
     FaGithub,
     FaLinkedin,
@@ -18,24 +16,6 @@ import {
 } from "../animations/variants";
 
 function Hero() {
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-
-        const checkScreen = () => {
-
-            setIsMobile(window.innerWidth <= 768);
-
-        };
-
-        checkScreen();
-
-        window.addEventListener("resize", checkScreen);
-
-        return () => window.removeEventListener("resize", checkScreen);
-
-    }, []);
 
     return (
 
@@ -84,33 +64,19 @@ function Hero() {
 
                     <h2>
 
-                        {
+                        <TypeAnimation
 
-                            isMobile ?
+                            sequence={[
+                                ...heroData.title.flatMap(item => [item, 2000])
+                            ]}
 
-                                <span>
+                            wrapper="span"
 
-                                    Frontend React Developer
+                            speed={50}
 
-                                </span>
+                            repeat={Infinity}
 
-                                :
-
-                                <TypeAnimation
-
-                                    sequence={[
-                                        ...heroData.title.flatMap(item => [item, 2000])
-                                    ]}
-
-                                    wrapper="span"
-
-                                    speed={50}
-
-                                    repeat={Infinity}
-
-                                />
-
-                        }
+                        />
 
                     </h2>
 
@@ -163,7 +129,7 @@ function Hero() {
                         <a
 
                             href={heroData.social.linkedin}
-
+                            
                             target="_blank"
 
                             rel="noreferrer"
@@ -238,49 +204,21 @@ function Hero() {
 
                         <span className="orbit orbit-2"></span>
 
-                        {
+                        <motion.img
 
-                            isMobile ?
+                            src={heroData.image}
 
-                                <img
+                            alt={heroData.name}
 
-                                    src={heroData.image}
+                            variants={floating}
 
-                                    alt={heroData.name}
+                            animate="animate"
 
-                                    width="500"
+                            width="500"
 
-                                    height="500"
+                            height="500"
 
-                                    loading="eager"
-
-                                    decoding="async"
-
-                                />
-
-                                :
-
-                                <motion.img
-
-                                    src={heroData.image}
-
-                                    alt={heroData.name}
-
-                                    variants={floating}
-
-                                    animate="animate"
-
-                                    width="500"
-
-                                    height="500"
-
-                                    loading="eager"
-
-                                    decoding="async"
-
-                                />
-
-                        }
+                        />
 
                     </div>
 

@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import { motion } from "framer-motion";
 
 import {
@@ -11,24 +9,6 @@ import {
 import SectionTitle from "../components/SectionTitle";
 
 function Projects() {
-
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-
-        const checkMobile = () => {
-
-            setIsMobile(window.innerWidth <= 768);
-
-        };
-
-        checkMobile();
-
-        window.addEventListener("resize", checkMobile);
-
-        return () => window.removeEventListener("resize", checkMobile);
-
-    }, []);
 
     const projects = [
 
@@ -131,73 +111,28 @@ function Projects() {
 
                             className="project-card"
 
-                            initial={
-
-                                isMobile
-
-                                    ? { opacity: 1 }
-
-                                    : {
-
-                                        opacity: 0,
-
-                                        y: 40
-
-                                    }
-
-                            }
-
-                            whileInView={
-
-                                isMobile
-
-                                    ? { opacity: 1 }
-
-                                    : {
-
-                                        opacity: 1,
-
-                                        y: 0
-
-                                    }
-
-                            }
-
-                            transition={
-
-                                isMobile
-
-                                    ? {}
-
-                                    : {
-
-                                        duration: 0.5,
-
-                                        delay: index * 0.15
-
-                                    }
-
-                            }
-
-                            viewport={{
-
-                                once: true
-
+                            initial={{
+                                opacity: 0,
+                                y: 40
                             }}
 
-                            whileHover={
+                            whileInView={{
+                                opacity: 1,
+                                y: 0
+                            }}
 
-                                isMobile
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.15
+                            }}
 
-                                    ? {}
+                            viewport={{
+                                once: true
+                            }}
 
-                                    : {
-
-                                        y: -10
-
-                                    }
-
-                            }
+                            whileHover={{
+                                y: -10
+                            }}
 
                         >
 

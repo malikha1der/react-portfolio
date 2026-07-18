@@ -39,8 +39,6 @@
     box-shadow:
         0 8px 25px rgba(0,245,255,.25);
 
-    box-sizing:border-box;
-
 }
 
 .btn:hover{
@@ -90,10 +88,6 @@
 
 }
 
-/* =========================
-   Mobile
-========================= */
-
 @media(max-width:768px){
 
     .btn{
@@ -101,22 +95,6 @@
         width:100%;
 
         justify-content:center;
-
-        padding:14px 20px;
-
-    }
-
-    .btn:hover{
-
-        transform:none;
-
-        box-shadow:0 8px 20px rgba(0,245,255,.25);
-
-    }
-
-    .btn:hover svg{
-
-        transform:none;
 
     }
 
