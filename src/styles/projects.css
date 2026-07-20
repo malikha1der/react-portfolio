@@ -1,359 +1,87 @@
-yeh project.css he
 /* =========================
    Projects Section
 ========================= */
+.projects { position: relative; padding: 120px 40px; overflow: hidden; }
 
-.projects{
-
-    position:relative;
-
-    padding:120px 40px;
-
-    overflow:hidden;
-
-}
+.projects-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
 /* =========================
-   Projects Grid
+   Project Card (Performance Fix: added will-change)
 ========================= */
-
-.projects-container{
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:30px;
-
-}
-
-/* =========================
-   Project Card
-========================= */
-
-.project-card{
-
-    position:relative;
-
-    padding:35px 30px;
-
-    border-radius:22px;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(18px);
-
-    overflow:hidden;
-
-    transition:.4s ease;
-
-    text-align:center;
-
-    z-index:1;
-
+.project-card {
+    position: relative;
+    padding: 35px 30px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    backdrop-filter: blur(18px);
+    overflow: hidden;
+    transition: .4s ease;
+    text-align: center;
+    z-index: 1;
+    will-change: transform;
 }
 
 /* Animated Border */
-
-.project-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:-2px;
-
-    background:conic-gradient(
-
-        #00f5ff,
-
-        #7b2cff,
-
-        #00f5ff,
-
-        #7b2cff,
-
-        #00f5ff
-
-    );
-
-    animation:projectBorder 6s linear infinite;
-
-    z-index:-2;
-
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: conic-gradient(#00f5ff, #7b2cff, #00f5ff, #7b2cff, #00f5ff);
+    animation: projectBorder 6s linear infinite;
+    z-index: -2;
 }
 
-.project-card::after{
+.project-card::after { content: ""; position: absolute; inset: 2px; background: #111111; border-radius: 20px; z-index: -1; }
 
-    content:"";
-
-    position:absolute;
-
-    inset:2px;
-
-    background:#111111;
-
-    border-radius:20px;
-
-    z-index:-1;
-
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 0 25px rgba(0, 245, 255, .25), 0 0 45px rgba(123, 44, 255, .18);
 }
 
-.project-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:
-
-        0 0 25px rgba(0,245,255,.25),
-
-        0 0 45px rgba(123,44,255,.18);
-
+/* Icon */
+.project-icon {
+    width: 95px; height: 95px; margin: 0 auto 28px; display: flex;
+    justify-content: center; align-items: center; border-radius: 50%;
+    background: rgba(255, 255, 255, .05); color: #00f5ff; font-size: 44px; transition: .4s;
 }
 
-/* =========================
-   Icon
-========================= */
+.project-card:hover .project-icon { transform: rotate(12deg) scale(1.12); color: #ffffff; box-shadow: 0 0 30px rgba(0, 245, 255, .45); }
 
-.project-icon{
+.project-content h3 { font-size: 26px; color: #ffffff; margin-bottom: 18px; }
+.project-content p { color: #b5b5b5; line-height: 1.8; font-size: 16px; margin-bottom: 25px; }
 
-    width:95px;
-
-    height:95px;
-
-    margin:0 auto 28px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.05);
-
-    color:#00f5ff;
-
-    font-size:44px;
-
-    transition:.4s;
-
+/* Tech Stack */
+.tech-stack { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.tech-stack span {
+    padding: 8px 16px; border-radius: 30px; background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08); color: #00f5ff; font-size: 14px; transition: .3s;
 }
-
-.project-card:hover .project-icon{
-
-    transform:rotate(12deg) scale(1.12);
-
-    color:#ffffff;
-
-    box-shadow:0 0 30px rgba(0,245,255,.45);
-
-}
-
-/* =========================
-   Heading
-========================= */
-
-.project-content h3{
-
-    font-size:26px;
-
-    color:#ffffff;
-
-    margin-bottom:18px;
-
-}
-
-/* =========================
-   Description
-========================= */
-
-.project-content p{
-
-    color:#b5b5b5;
-
-    line-height:1.8;
-
-    font-size:16px;
-
-    margin-bottom:25px;
-
-}
-
-/* =========================
-   Tech Stack
-========================= */
-
-.tech-stack{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-}
-
-.tech-stack span{
-
-    padding:8px 16px;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.05);
-
-    border:1px solid rgba(255,255,255,.08);
-
-    color:#00f5ff;
-
-    font-size:14px;
-
-    transition:.3s;
-
-}
-
-.tech-stack span:hover{
-
-    background:#00f5ff;
-
-    color:#050505;
-
-    transform:translateY(-3px);
-
-}
+.tech-stack span:hover { background: #00f5ff; color: #050505; transform: translateY(-3px); }
 
 /* =========================
    Animation
 ========================= */
-
-@keyframes projectBorder{
-
-    from{
-
-        transform:rotate(0deg);
-
-    }
-
-    to{
-
-        transform:rotate(360deg);
-
-    }
-
-}
+@keyframes projectBorder { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* =========================
-   Responsive
+   Responsive (Performance Fixes)
 ========================= */
+@media(max-width:1100px) { .projects-container { grid-template-columns: repeat(2, 1fr); } }
 
-@media(max-width:1100px){
-
-    .projects-container{
-
-        grid-template-columns:repeat(2,1fr);
-
-    }
-
+@media(max-width:768px) {
+    .projects { padding: 100px 0; }
+    .projects-container { grid-template-columns: 1fr; }
+    
+    /* Performance Fix: Mobile Blur & Hover Animation Remove */
+    .project-card { backdrop-filter: none; background: rgba(255, 255, 255, 0.06); }
+    .project-card::before { animation: none; background: none; }
+    .project-card:hover { transform: none; box-shadow: none; border-color: rgba(255, 255, 255, .08); }
+    .project-card:hover .project-icon { transform: none; color: #00f5ff; box-shadow: none; }
+    .tech-stack span:hover { transform: none; background: rgba(255, 255, 255, .05); color: #00f5ff; }
 }
 
-@media(max-width:768px){
-
-    .projects{
-
-        padding:100px 0;
-
-    }
-
-    .projects-container{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .project-card{
-
-        padding:30px;
-
-    }
-
-    .project-icon{
-
-        width:85px;
-
-        height:85px;
-
-        font-size:38px;
-
-    }
-
-}
-
-@media(max-width:480px){
-
-    .project-content h3{
-
-        font-size:22px;
-
-    }
-
-    .project-content p{
-
-        font-size:15px;
-
-    }
-
-}
-@media (max-width:768px){
-
-    /* Animated Border Remove */
-
-    .project-card::before{
-
-        animation: none;
-
-        background: none;
-
-    }
-
-    /* Hover Effect Remove */
-
-    .project-card:hover{
-
-        transform: none;
-
-        box-shadow: none;
-
-        border-color: rgba(255,255,255,.08);
-
-    }
-
-    /* Icon Hover Effect Remove */
-
-    .project-card:hover .project-icon{
-
-        transform: none;
-
-        color: #00f5ff;
-
-        box-shadow: none;
-
-    }
-
-    /* Tech Stack Hover Remove */
-
-    .tech-stack span:hover{
-
-        transform: none;
-
-        background: rgba(255,255,255,.05);
-
-        color: #00f5ff;
-
-    }
-
+@media(max-width:480px) {
+    .project-content h3 { font-size: 22px; }
+    .project-content p { font-size: 15px; }
 }
