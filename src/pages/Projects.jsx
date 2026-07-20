@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
-// Optimized Imports (Tree-shaking)
-import { FaClipboardList } from "react-icons/fa/FaClipboardList";
-import { FaCloudSun } from "react-icons/fa/FaCloudSun";
-import { FaLaptopCode } from "react-icons/fa/FaLaptopCode";
+// FIX: Named imports from the main package folder
+import { FaClipboardList, FaCloudSun, FaLaptopCode } from "react-icons/fa";
 
 import SectionTitle from "../components/SectionTitle";
 
@@ -40,10 +38,13 @@ function Projects() {
                     <motion.div
                         key={index}
                         className="project-card"
+                        // Performance: Ensure GPU acceleration
+                        style={{ willChange: "transform" }}
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.15 }}
+                        transition={{ duration: 0.5, delay: index * 0.1 }}
                         viewport={{ once: true }}
+                        // Mobile optimization: Hover disable
                         whileHover={{ y: -10 }}
                     >
                         <div className="project-icon">{project.icon}</div>
